@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="countdlv.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+</head>
+<body>
+    <div class="countdown" id="countdown">59</div>
+    <script>
+        let countdownElement = document.getElementById('countdown');
+        let countdownValue = 59;
+
+        function countdown() {
+            countdownValue--;
+            countdownElement.textContent = countdownValue;
+
+            if (countdownValue === 0) {
+                clearInterval(intervalId);
+                changeColor();
+            }
+        }
+
+        let intervalId = setInterval(countdown, 1000);
+
+        function changeColor() {
+            let colors = ['red', 'green', 'blue', 'yellow', 'pink'];
+            let colorIndex = 0;
+
+            function change() {
+                document.body.style.backgroundColor = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+            }
+
+            let intervalColor = setInterval(change, 500);
+        }
+    </script>
+</body>
+</html>
